@@ -1,7 +1,5 @@
 # Theory assignment for class 1
 
----
-
 ### Q1. What is Emmet?
 
 Emmet is a plugin which helps to improve worflow of HTML, CSS and other programming languages also.
