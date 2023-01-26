@@ -1,0 +1,19 @@
+.navbar {
+  max-width: 50%;
+  margin: 30px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo,
+.user-icon {
+  width: 30px;
+  cursor: pointer;
+}
+
+input[type='text'] {
+  width: 200px;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
