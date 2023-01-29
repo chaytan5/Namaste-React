@@ -1,0 +1,42 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid black;
+}
+
+.logo {
+  width: 100px;
+  border-radius: 50%;
+}
+
+.nav-items>ul {
+  list-style-type: none;
+  display: flex;
+}
+
+.nav-items>ul>li {
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.card {
+  width: 200px;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.card>img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.container {
+  margin: 0 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
