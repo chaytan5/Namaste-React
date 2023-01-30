@@ -25,6 +25,17 @@
 
 .card {
   width: 200px;
+  min-height: 300px;
+  max-height: fit-content;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.shimmer-card {
+  width: 200px;
+  height: 300px;
   padding: 10px;
   margin: 10px;
   border: 1px solid black;
@@ -65,4 +76,20 @@
 .search-btn:hover {
   cursor: pointer;
   background-color: #ffd998;
+}
+
+.btn {
+  width: 100px;
+  border-radius: 5px;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.login-btn {
+  background-color: lightgreen;
+}
+
+.logout-btn {
+  background-color: lightcoral;
 }
