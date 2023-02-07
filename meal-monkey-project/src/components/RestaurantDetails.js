@@ -11,19 +11,28 @@ const Restaurantrestaurant = () => {
 	if (!restaurant) return <h1>Loading...</h1>;
 
 	return (
-		<div className="restaurant-details">
-			<div>
-				<h1>{restaurant?.name}</h1>
-				<img src={IMG_CDN_URL + restaurant?.cloudinaryImageId} alt="" />
-				<h3>{restaurant?.area + ", " + restaurant?.city}</h3>
+		<div className="m-5 flex lg:flex-row flex-col justify-evenly gap-10">
+			<div className="mt-5 flex-none">
+				<h1 className="font-bold text-4xl mb-4">{restaurant?.name}</h1>
+				<img
+					className="h-[200px] rounded-md mb-5 "
+					src={IMG_CDN_URL + restaurant?.cloudinaryImageId}
+					alt="restaurant image"
+				/>
+				<h3 className="text-lg font-medium mb-2">
+					{restaurant?.area + ", " + restaurant?.city}
+				</h3>
 				<h4>{restaurant?.cuisines?.join(", ")}</h4>
-				<p>{restaurant?.costForTwoMsg}</p>
-				<h4>{restaurant?.avgRating} stars</h4>
+				<p className="mb-2">{restaurant?.costForTwoMsg}</p>
+				<h4 className="font-semibold">{restaurant?.avgRating} stars</h4>
 			</div>
-			<div>
-				<ul>
+			<div className="mt-8">
+				<div className="font-semibold text-xl mb-4">Menu</div>
+				<ul className="md:columns-2 lg:columns-2">
 					{Object.values(restaurant?.menu?.items).map((item) => (
-						<li key={item.id}>{item?.name}</li>
+						<li className="list-disc list-inside" key={item.id}>
+							{item?.name}
+						</li>
 					))}
 				</ul>
 			</div>

@@ -9,7 +9,6 @@ import Contact from "./components/Contact";
 import RestaurantDetails from "./components/RestaurantDetails";
 import Profile from "./components/Profile";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import Shimmer from "./components/Shimmer";
 
 const Instamart = lazy(() => import("./components/Instamart"));
 
