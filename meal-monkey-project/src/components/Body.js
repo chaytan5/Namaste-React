@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper";
 import { useRestaurants } from "../utils/useRestaurants";
 import { useOnline } from "../utils/useOnline";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
 	const [searchText, setSearchText] = useState("");
@@ -12,6 +13,8 @@ const Body = () => {
 	const [allRestaurants] = useRestaurants();
 
 	const isOnline = useOnline();
+
+	const { user, setUser } = useContext(UserContext);
 
 	if (!isOnline)
 		return (
@@ -36,7 +39,7 @@ const Body = () => {
 					onChange={(event) => setSearchText(event.target.value)}
 				/>
 				<button
-					className="border text-white px-6 py-2.5 hover:bg-opacity-90 rounded-xl bg-red-500 drop-shadow-md"
+					className="border text-white px-6 mr-4 py-2.5 hover:bg-opacity-90 rounded-xl bg-red-500 drop-shadow-md"
 					onClick={() => {
 						const data = filterData(allRestaurants, searchText);
 						setFilteredRestaurants(data);
@@ -44,6 +47,28 @@ const Body = () => {
 				>
 					Search
 				</button>
+				<input
+					className="border-2 border-red-800 border-spacing-2 p-2 mr-4"
+					type="text"
+					value={user.name}
+					onChange={(e) =>
+						setUser({
+							...user,
+							name: e.target.value,
+						})
+					}
+				/>
+				<input
+					className="border-2 border-yellow-500 border-spacing-2 p-2 mr-4"
+					type="text"
+					value={user.email}
+					onChange={(e) =>
+						setUser({
+							...user,
+							email: e.target.value,
+						})
+					}
+				/>
 			</div>
 
 			<div className="flex flex-row flex-wrap">
