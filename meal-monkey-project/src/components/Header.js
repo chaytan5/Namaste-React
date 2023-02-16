@@ -1,16 +1,17 @@
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Logo = () => {
 	return (
-		<a href="/">
+		<Link to={"/"}>
 			<img
 				className="h-20 rounded-full"
 				src="https://img.freepik.com/premium-vector/monkey-logo-hotdog-food_228886-182.jpg?w=2000"
 				alt="logo"
 			/>
-		</a>
+		</Link>
 	);
 };
 
@@ -18,6 +19,8 @@ const Header = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 	const { user } = useContext(UserContext);
+
+	const cartItems = useSelector((state) => state.cart.items);
 
 	return (
 		<div className="flex justify-between items-center px-6 py-2 bg-blue-50 mb-5 rounded-b-2xl shadow-lg">
@@ -36,7 +39,9 @@ const Header = () => {
 					<Link to={"/instamart"}>
 						<li>Instamart</li>
 					</Link>
-					<li>Cart</li>
+					<Link to={"/cart"}>
+						<li>Cart - {cartItems?.length} items</li>
+					</Link>
 				</ul>
 			</div>
 			<div className="text-lg text-green-700">{user.name}</div>

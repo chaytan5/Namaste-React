@@ -2,16 +2,22 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { IMG_CDN_URL } from "./constants";
 import { useRestaurantDetails } from "../utils/useRestaurantDetails";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 
-const Restaurantrestaurant = () => {
+const RestaurantDetails = () => {
 	const { resId } = useParams();
+	const dispatch = useDispatch();
 
 	const restaurant = useRestaurantDetails(resId);
 
-	if (!restaurant) return <h1>Loading...</h1>;
+	function handleAddItem(item) {
+		dispatch(addItem(item));
+	}
 
+	if (!restaurant) return <h1>Loading...</h1>;
 	return (
-		<div className="m-5 flex lg:flex-row flex-col justify-evenly gap-10">
+		<div className="w-[90%] md:w-[80%] lg:w-[70%] my-5 mx-auto flex lg:flex-row flex-col justify-evenly gap-10">
 			<div className="mt-5 flex-none">
 				<h1 className="font-bold text-4xl mb-4">{restaurant?.name}</h1>
 				<img
@@ -28,10 +34,16 @@ const Restaurantrestaurant = () => {
 			</div>
 			<div className="mt-8">
 				<div className="font-semibold text-xl mb-4">Menu</div>
-				<ul className="md:columns-2 lg:columns-2">
+				<ul className="md:columns-2 lg:columns-2 ">
 					{Object.values(restaurant?.menu?.items).map((item) => (
 						<li className="list-disc list-inside" key={item.id}>
-							{item?.name}
+							{item?.name}{" "}
+							<button
+								className="p-1 ml-2 bg-green-50 rounded-md "
+								onClick={() => handleAddItem(item)}
+							>
+								Add
+							</button>
 						</li>
 					))}
 				</ul>
@@ -40,4 +52,4 @@ const Restaurantrestaurant = () => {
 	);
 };
 
-export default Restaurantrestaurant;
+export default RestaurantDetails;
